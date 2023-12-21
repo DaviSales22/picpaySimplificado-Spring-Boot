@@ -17,7 +17,10 @@ import jakarta.persistence.Table;
 @Entity(name="transactions") 
 @Table(name="transactions") 
 
-public class Transaction {
+public class Transaction { 
+	public Transaction() {
+		
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -3,6 +3,8 @@ package com.picpaysimplificado.domain.user;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.picpaysimplificado.dtos.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -107,6 +109,10 @@ public class User {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	public User() {
+		super();
+	}
+
 	private String firstName;
 	private String lastName;
 	@Column(unique=true)
@@ -127,6 +133,14 @@ public class User {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
-	
+	public User(UserDTO data) {
+		this.firstName = data.firstName();
+		this.lastName = data.lastName();
+		this.balance = data.balance();
+		this.userType = data.userType();
+		this.password = data.password();
+		this.email  = data.email();
+		this.document = data.document();
+	}
 	
 }
